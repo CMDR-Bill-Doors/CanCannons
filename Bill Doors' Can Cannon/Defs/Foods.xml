@@ -15,6 +15,7 @@
       <Bulk>1.5</Bulk>
       <WorkToMake>650</WorkToMake>
       <Nutrition>0.9</Nutrition>
+      <DeteriorationRate>0</DeteriorationRate>
     </statBases>
     <ingestible>
       <preferability>MealAwful</preferability>
