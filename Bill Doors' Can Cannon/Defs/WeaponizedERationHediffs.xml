@@ -4,7 +4,7 @@
   <HediffDef>
     <defName>FragCanInStomach</defName>
     <label>frags in stomach</label>
-    <description>Pointy foreign body digested and remained in stomach, causes pain and decreased functionality.\nYou shoudn't have eaten that can of food with explosive label.</description>
+    <description>Pointy foreign body digested and remained in stomach, causes pain and decreased functionality.\n\nYou shoudn't have eaten that can of food with explosive label.</description>
     <descriptionHyperlinks>
       <RecipeDef>CureFragInStomach</RecipeDef>
     </descriptionHyperlinks>
@@ -155,7 +155,7 @@
   <HediffDef>
     <defName>IncendiaryCanInStomach</defName>
     <label>chemfuel in stomach</label>
-    <description>Consumption of chemfuel, causes stomach ache and increased flammability.\nYou shoudn't have eaten that can of food with incendiary label.</description>
+    <description>Consumption of chemfuel, causes stomach ache and increased flammability.\n\nYou shoudn't have eaten that can of food with incendiary label.</description>
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(1,0,0)</defaultLabelColor>
     <makesSickThought>true</makesSickThought>
@@ -277,7 +277,7 @@
   <HediffDef>
     <defName>ToxinCanInStomach</defName>
     <label>toxin in stomach</label>
-    <description>A full can of toxin is now circulating in the bloodstream. Such an amount of toxic substance is lethal.\nYou shoudn't have eaten that can of food with toxic label.\nTending can slow down the toxin's spreading speed, buying time for emergency toxin removal, but it can't completely stop it.</description>
+    <description>A full can of toxin is now circulating in the bloodstream. Such an amount of toxic substance is lethal.\n\nYou shoudn't have eaten that can of food with toxic label.\n\nTending can slow down the toxin's spreading speed, buying time for emergency toxin removal, but it can't completely stop it.</description>
     <descriptionHyperlinks>
       <RecipeDef>CureToxinInStomach</RecipeDef>
     </descriptionHyperlinks>
