@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  
+  <ThingCategoryDef>
+    <defName>AmmoCategoryERation</defName>
+    <label>weaponized E-ration can</label>
+    <parent>AmmoGrenades</parent>
+    <iconPath>UI/Icons/ThingCategories/AmmoGrenades</iconPath>
+  </ThingCategoryDef>
+
+  <!-- ==================== AmmoSet ========================== -->
+  
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_ERation</defName>
+    <label>weaponized E-ration cans</label>
+    <ammoTypes>
+      <Ammo_ERation_Standard>Projectile_ERation_Standard</Ammo_ERation_Standard>
+      <Ammo_ERation_Incendiary>Projectile_ERation_Incendiary</Ammo_ERation_Incendiary>
+      <Ammo_ERation_Frag>Projectile_Eration_Frag</Ammo_ERation_Frag>
+  </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo Category Def ===================-->
+
+  <CombatExtended.AmmoCategoryDef>
+    <defName>Can</defName>
+    <label>Can</label>
+    <description>E-ration can with a propellant charge, does nothing but trolls.</description>
+  </CombatExtended.AmmoCategoryDef>
+
+
+  <CombatExtended.AmmoCategoryDef>
+    <defName>CanFrag</defName>
+    <label>Frag</label>
+    <description>E-ration can filled with needles, metal shards and explosives, scattering lethal shell fragments in a large area.</description>
+  </CombatExtended.AmmoCategoryDef>
+  
+  <CombatExtended.AmmoCategoryDef>
+    <defName>CanIncendiary</defName>
+    <label>Incendiary</label>
+    <description>E-ration can filled with chemfuel, explosive and a prometheum igniter, starts fire in a large area</description>
+  </CombatExtended.AmmoCategoryDef>
+
+  <CombatExtended.AmmoCategoryDef>
+    <defName>CanGas</defName>
+    <label>Toxic Gas</label>
+    <description>E-ration cans loaded with volatile toxic substance that spreads in a wide area on impact.</description>
+  </CombatExtended.AmmoCategoryDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="AmmoERationmmBase" ParentName="AmmoBase" Abstract="True">
+    <statBases>
+      <Mass>0.55</Mass>
+      <Bulk>1.8</Bulk>
+      <Nutrition>0.4</Nutrition>
+    </statBases>
+    <ingestible>
+      <foodType>Meal</foodType>
+      <maxNumToIngestAtOnce>2</maxNumToIngestAtOnce>
+      <optimalityOffsetHumanlikes>-100</optimalityOffsetHumanlikes>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+      <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+    </ingestible>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting_ElectricStove</li>
+      <li>CE_AutoEnableCrafting_FueledStove</li>
+      <li>CE_AutoEnableCrafting_CraftingSpot</li>
+    </tradeTags>
+    <thingCategories>
+      <li>AmmoCategoryERation</li>
+    </thingCategories>
+    <stackLimit>50</stackLimit>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoERationmmBase">
+    <defName>Ammo_ERation_Standard</defName>
+    <description>Improvised grenade made of empty E-ration can attached to a propellant charge.</description>
+    <label>weaponized E-ration can (Food)</label>
+    <graphicData>
+      <texPath>Things/Item/Food/E_Ration</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>5.52</MarketValue>
+      <Nutrition Inherit="False">0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <tasteThought>AteAwfulMeal</tasteThought>
+    </ingestible>
+    <ammoClass>Can</ammoClass>
+    <detonateProjectile>Projectile_ERation_Standard</detonateProjectile>
+  </ThingDef>
+
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoERationmmBase">
+    <defName>Ammo_ERation_Frag</defName>
+    <description>Improvised grenade made of empty E-ration can filled with chemfuel, explosive and a prometheum igniter.</description>
+    <descriptionHyperlinks>
+      <HediffDef>FragCanInStomach</HediffDef>
+      <RecipeDef>CureFragInStomach</RecipeDef>
+    </descriptionHyperlinks>
+    <label>weaponized E-ration can (Frag)</label>
+    <graphicData>
+      <texPath>Things/Ammo/GrenadeLauncher/ERation_frag</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>5.52</MarketValue>
+    </statBases>
+    <ingestible>
+      <tasteThought>AteFragCan</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>FragCanInStomach</hediffDef>
+          <severity>0.15</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <ammoClass>CanFrag</ammoClass>
+    <detonateProjectile>Projectile_Eration_Frag</detonateProjectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoERationmmBase">
+    <defName>Ammo_ERation_Incendiary</defName>
+    <description>Improvised grenade made of empty E-ration can filled with chemfuel, explosive and a prometheum igniter</description>
+    <descriptionHyperlinks>
+      <HediffDef>IncendiaryCanInStomach</HediffDef>
+    </descriptionHyperlinks>
+    <label>weaponized E-ration can (Incendiary)</label>
+    <graphicData>
+      <texPath>Things/Ammo/GrenadeLauncher/ERaation_Incendiary</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>5.52</MarketValue>
+    </statBases>
+    <ingestible>
+      <tasteThought>AteIncCan</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>IncendiaryCanInStomach</hediffDef>
+          <severity>0.15</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <ammoClass>CanIncendiary</ammoClass>
+    <detonateProjectile>Projectile_ERation_Incendiary</detonateProjectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoERationmmBase">
+    <defName>Ammo_ERation_Gas</defName>
+    <description>Improvised grenade made of empty E-ration cans loaded with volatile toxic substance..</description>
+    <descriptionHyperlinks>
+      <HediffDef>ToxinCanInStomach</HediffDef>
+      <RecipeDef>CureToxinInStomach</RecipeDef>
+    </descriptionHyperlinks>
+    <label>weaponized E-ration can (Gas)</label>
+    <graphicData>
+      <texPath>Things/Ammo/GrenadeLauncher/ERation_gas</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>5.52</MarketValue>
+    </statBases>
+    <ingestible>
+      <tasteThought>AteToxicCan</tasteThought>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>ToxinCanInStomach</hediffDef>
+          <severity>0.001</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <ammoClass>CanGas</ammoClass>
+    <detonateProjectile>Projectile_ERation_Gas</detonateProjectile>
+  </ThingDef>
+
+
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="BaseERationBullet" ParentName="BaseBullet" Abstract="true">
+    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/foods_E_Ration_projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <speed>10</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseERationBullet">
+    <defName>Projectile_ERation_Standard</defName>
+    <label>weaponized E-ration</label>
+    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>1</damageAmountBase>
+      <armorPenetrationSharp>0</armorPenetrationSharp>
+      <armorPenetrationBlunt>5</armorPenetrationBlunt>
+      <preExplosionSpawnChance>0.9</preExplosionSpawnChance>
+      <preExplosionSpawnThingDef>ERation</preExplosionSpawnThingDef>
+    </projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseERationBullet">
+    <defName>Projectile_Eration_Frag</defName>
+    <label>weaponized E-ration</label>
+    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>25</damageAmountBase>
+      <explosionRadius>1</explosionRadius>
+      <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+    </projectile>
+    <comps>
+      <li Class="CombatExtended.CompProperties_Fragments">
+        <fragments>
+          <Fragment_Small>40</Fragment_Small>
+        </fragments>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseERationBullet">
+    <defName>Projectile_ERation_Incendiary</defName>
+    <label>weaponized E-ration</label>
+    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <armorPenetrationSharp>0</armorPenetrationSharp>
+      <armorPenetrationBlunt>0</armorPenetrationBlunt>
+      <explosionRadius>3.5</explosionRadius>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.55</preExplosionSpawnChance>
+      <soundExplode>MortarIncendiary_Explode</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseERationBullet">
+    <defName>Projectile_ERation_Gas</defName>
+    <label>weaponized E-ration</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <explosionRadius>3</explosionRadius>
+      <damageDef>Smoke</damageDef>
+      <postExplosionSpawnThingDef>ToxicGas</postExplosionSpawnThingDef>
+      <preExplosionSpawnChance>1</preExplosionSpawnChance>
+    </projectile>
+  </ThingDef>
+  
+  <!-- ==================== Recipes ========================== -->
+
+  <RecipeDef Name="ERationRecipeBase" ParentName="AmmoRecipeBase" Abstract="true">
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <workSkill>Intellectual</workSkill>
+  </RecipeDef>
+
+  <RecipeDef ParentName="ERationRecipeBase">
+    <defName>MakeAmmo_ERation_Standard</defName>
+    <label>make weaponized E-ration can (Food) x10</label>
+    <description>Craft 10 weaponiezd E-ration cans.</description>
+    <jobString>Making weaponized E-ration cans.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ERation</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ERation</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Projectile_ERation_Standard>10</Projectile_ERation_Standard>
+    </products>
+  </RecipeDef>
+
+
+  <RecipeDef ParentName="ERationRecipeBase">
+    <defName>MakeAmmo_ERation_Frag</defName>
+    <label>make weaponized E-ration can (Frag) x10</label>
+    <description>Craft 10 frag weaponiezd E-ration cans.</description>
+    <jobString>Making frag E-ration cans.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FSX</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ERation</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>FSX</li>
+        <li>ERation</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_ERation_Frag>10</Ammo_ERation_Frag>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="ERationRecipeBase">
+    <defName>MakeAmmo_ERation_Incendiary</defName>
+    <label>make weaponized E-ration can (Incendiary) x10</label>
+    <description>Craft 10 incendiary weaponiezd E-ration cans.</description>
+    <jobString>Making incendiary E-ration cans.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ERation</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Prometheum</li>
+        <li>Chemfuel</li>
+        <li>ERation</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_ERation_Incendiary>10</Ammo_ERation_Incendiary>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="ERationRecipeBase">
+    <defName>MakeAmmo_ERation_Gas</defName>
+    <label>make weaponized E-ration can (Gas) x10</label>
+    <description>Craft 10 gas weaponiezd E-ration cans. Since there're organics in the cans already you don't need extra materials for the toxic gas.</description>
+    <jobString>Making gas E-ration cans.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ERation</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Chemfuel</li>
+        <li>ERation</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_ERation_Gas>10</Ammo_ERation_Gas>
+    </products>
+  </RecipeDef>
+
+
+</Defs>

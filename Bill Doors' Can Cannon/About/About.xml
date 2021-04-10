@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Bill Doors' Can Cannon</name>
+  <author>3HST Limited</author>
+  <packageId>3HSTltd.Can.Cannons</packageId>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+  </supportedVersions>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+  </loadAfter>
+  <modDependencies>
+    <li>
+      <packageId>CETeam.CombatExtended</packageId>
+      <displayName>Combat Extended</displayName>
+      <downloadUrl>https://github.com/CombatExtended-Continued/CombatExtended</downloadUrl>
+    </li>
+  </modDependencies>
+  <description>
+    Adds a canned food and can cannons in the game
+
+    [E-ration]  (definitely no pun intended)
+    E-ration is a canned emergency food supply that doesn't rot or deteriorate, but they consumes steel to make and they tastes awful.
+
+    [Can Cannon]
+    Originally a toy that launches empty cans for a few meters, rebel weapon factories reinforced their barrels and receivers to support greater pressure, enabling them to throwing objects a reasonable distance away. Their range and accurancy are still inferior to proper grenade launchers, though.
+    You only need to research machining to craft it.
+
+    [Weaponized E-ration]
+    During the wartime, many E-rations are consumed and they left a plentyful supply of sturdy metal cans, which was being used by rebels to manufacture grenades launched by can cannons. Now on rimworld you are freed from the torture of consuming E-rations and you can simply craft them with un-opened cans!
+    They are crafted on crafting spots and stoves, not machining table nor loading bench.
+
+    [Food Warhead]
+    These "grenades"are simply a intact E-ration with a propellant charge. As edible as a normal E-ration! (well, that probably means not edible) Troll your friends or enemies with a 55x120 food grenade!
+
+    [Frag Warhead]
+    A can filled with neddles, metal shards and explosives, they detonates on impact and unleashes a storm of fragments. Can also be eaten in desperate situations but Elven Liberation Front supply officers highly disencourage you to do so. Not only because their nutrition content are lower due to some space being taken up by the warhead but also the possible* stomachache it'll introduce may reduce your combat efficiency.
+    *Note:possible means 99.999999%
+  
+    [Incendiary Warhead]
+    This grenade is loaded with chemfuel and a small vial of prometheum as ignitor. (prometheum are expensive, man) The sheer size and amount combustible content makes it as deadly as regular incendiary grenades. Just don't drink it, it don't contain alcohol content, although you can certainly do so.
+    
+    [Toxic Warhead] (requires CE Chemical Warfare)
+    Putting everything toxic you can think of, cleaning agents, pesticides, superglue, poops, and add some chemfuel as reactant or whatever, and you got a makeshift gas grenade. However Elven Liberation Front technicians found out a better way to do so: mix the original content in the can with chemfuel, seal the can and cock it at a certain tempreture then you have a gas grenade as reliable as the emperial ones!
+    WARNING: consumption of gas grenades can lead to severe consequences!
+    
+    First aid manual of gas grenade consumption:
+    If left untreated, patient will die within 12 hours. An immediate medical aid can slow down the spread of toxins, buying time for the patient to write a will.
+    Theoretically a large amount of glitterworld medicine and a lengthy blood filtering operation can neutralize the toxin, but Elven Liberation Front supply department can't spare such amount of precious medical supply to a moron that decides to eat a gas grenade, er, I mean, brave and adventurous warriors.
+    
+    This mod was originally a joke on CE discord.
+  </description>
+</ModMetaData>

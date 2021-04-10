@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MealBase">
+    <defName>ERation</defName>
+    <label>3HST Emergency Ration</label>
+    <description>Almost edible food designed to last for eternal sealed in stainless steel cans. Never rots and never deteriorate in the nature, but fire and weapon strikes will still damage it. It's mass manufactured and stored as an emergency food supply in event of catastrophe.</description>
+    <graphicData>
+      <texPath>Things/Item/Food/E_Ration</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <Flammability>0.1</Flammability>
+      <MarketValue>32</MarketValue>
+      <Mass>0.375</Mass>
+      <Bulk>1.5</Bulk>
+      <WorkToMake>650</WorkToMake>
+      <Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealAwful</preferability>
+      <tasteThought>AteAwfulMeal</tasteThought>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>
+    </ingestible>
+  </ThingDef>
+
+  <RecipeDef ParentName="CookMealBase">
+    <defName>CookMealERation</defName>
+    <label>cook emergency ration x10</label>
+    <description>Prepare and can 10 emergency rations from any meat or</description>
+    <jobString>Cooking 4 survival meals.</jobString>
+    <workAmount>1800</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+            <li>AnimalProductRaw</li>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <products>
+      <ERation>10</ERation>
+    </products>
+    <skillRequirements>
+      <Cooking>8</Cooking>
+    </skillRequirements>
+    <researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended - Chemical Warfare</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/CombatExtended.AmmoSetDef[defName = "AmmoSet_ERation"]/ammoTypes</xpath>
+          <value>
+            <Ammo_ERation_Gas>Projectile_ERation_Gas</Ammo_ERation_Gas>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>
+            /Defs/ThingDef[@Name="AnimalThingBase"]/recipes
+          </xpath>
+          <value>
+            <li>CureToxinInStomach</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>
+            /Defs/ThingDef[defName="Human"]/recipes
+          </xpath>
+          <value>
+            <li>CureToxinInStomach</li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

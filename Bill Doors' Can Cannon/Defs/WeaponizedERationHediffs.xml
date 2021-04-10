@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ======================= Frag =================-->
+  <HediffDef>
+    <defName>FragCanInStomach</defName>
+    <label>frags in stomach</label>
+    <description>Pointy foreign body digested and remained in stomach, causes pain and decreased functionality.\nYou shoudn't have eaten that can of food with explosive label.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>CureFragInStomach</RecipeDef>
+    </descriptionHyperlinks>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1,0,0)</defaultLabelColor>
+    <makesSickThought>true</makesSickThought>
+    <tendable>true</tendable>
+    <lethalSeverity>1</lethalSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.01</severityPerDay>
+        <showHoursToRecover>false</showHoursToRecover>
+      </li>
+      <li Class="HediffCompProperties_TendDuration">
+        <baseTendDurationHours>12</baseTendDurationHours>
+        <severityPerDayTended>-0.0773</severityPerDayTended>
+      </li>
+    </comps> 
+    <stages>
+      <li>
+        <label>minor</label>
+        <painOffset>0.1</painOffset>
+        <vomitMtbDays>1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+      
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>moderate</label>
+        <painOffset>0.2</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+      
+      <li>
+        <minSeverity>0.7</minSeverity>
+        <label>severe</label>
+        <vomitMtbDays>0.2</vomitMtbDays>
+        <painOffset>0.6</painOffset>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>dangerous</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.9</painOffset>
+        <vomitMtbDays>0.1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.8</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.25</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+    <ThoughtDef>
+    <defName>AteFragCan</defName>
+      <durationDays>1</durationDays>
+      <stages>
+        <li>
+          <label>ate frag can</label>
+          <description>Needles, metal fragments... wait, is that a detonator? What the hell is this? How can I eat this?</description>
+          <baseMoodEffect>-12</baseMoodEffect>
+        </li>
+      </stages>
+    </ThoughtDef>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>CureFragInStomach</defName>
+    <label>remove frags in stomach</label>
+    <description>This special medical operation opens up the patient's body and removes foreign bodies in the stomach.</description>
+    <descriptionHyperlinks>
+      <HediffDef>FragCanInStomach</HediffDef>
+    </descriptionHyperlinks>
+    <workerClass>Recipe_RemoveHediff</workerClass>
+    <jobString>Removing fragments.</jobString>
+    <workAmount>15000</workAmount>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <isViolation>false</isViolation>
+    <targetsBodyPart>false</targetsBodyPart>
+    <removesHediff>FragCanInStomach</removesHediff>
+    <successfullyRemovedHediffMessage>{0} has successfully removed the fragments in {1}'s stomach.</successfullyRemovedHediffMessage>
+    <skillRequirements>
+      <Medicine>8</Medicine>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>Medicine</li>
+      </categories>
+      <disallowedThingDefs>
+        <li>MedicineHerbal</li>
+      </disallowedThingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+<!--====================== Incendiary =====================-->
+  <HediffDef>
+    <defName>IncendiaryCanInStomach</defName>
+    <label>chemfuel in stomach</label>
+    <description>Consumption of chemfuel, causes stomach ache and increased flammability.\nYou shoudn't have eaten that can of food with incendiary label.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1,0,0)</defaultLabelColor>
+    <makesSickThought>true</makesSickThought>
+    <tendable>true</tendable>
+    <lethalSeverity>1</lethalSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.01</severityPerDay>
+        <showHoursToRecover>false</showHoursToRecover>
+      </li>
+      <li Class="HediffCompProperties_TendDuration">
+        <baseTendDurationHours>12</baseTendDurationHours>
+        <severityPerDayTended>-0.0773</severityPerDayTended>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>minor</label>
+        <statOffsets>
+          <Flammability>0.2</Flammability>
+        </statOffsets>
+        <painOffset>0.1</painOffset>
+        <vomitMtbDays>1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>moderate</label>
+        <painOffset>0.15</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <statOffsets>
+          <Flammability>0.35</Flammability>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <li>
+        <minSeverity>0.7</minSeverity>
+        <label>severe</label>
+        <vomitMtbDays>0.2</vomitMtbDays>
+        <painOffset>0.6</painOffset>
+        <statOffsets>
+          <Flammability>0.5</Flammability>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>dangerous</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.9</painOffset>
+        <vomitMtbDays>0.1</vomitMtbDays>
+        <statOffsets>
+          <Flammability>0.8</Flammability>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.8</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.25</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>AteIncCan</defName>
+    <durationDays>1</durationDays>
+    <stages>
+      <li>
+        <label>ate incendiary can</label>
+        <description>Darn, why this meal smells like chemfuel? And what's in that vial? Is that sauce or prometh------</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ===================== Toxic ========================-->
+  <HediffDef>
+    <defName>ToxinCanInStomach</defName>
+    <label>toxin in stomach</label>
+    <description>A full can of toxin is now circulating in the bloodstream. Such an amount of toxic substance is lethal.\nYou shoudn't have eaten that can of food with toxic label.\nTending can slow down the toxin's spreading speed, buying time for emergency toxin removal, but it can't completely stop it.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>CureToxinInStomach</RecipeDef>
+    </descriptionHyperlinks>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1,0,0)</defaultLabelColor>
+    <makesSickThought>true</makesSickThought>
+    <tendable>true</tendable>
+    <lethalSeverity>1</lethalSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>2</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+      <li Class="HediffCompProperties_TendDuration">
+        <baseTendDurationHours>12</baseTendDurationHours>
+        <severityPerDayTended>-1</severityPerDayTended>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>minor</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.1</painOffset>
+        <vomitMtbDays>1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>moderate</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.2</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <li>
+        <minSeverity>0.7</minSeverity>
+        <label>severe</label>
+        <lifeThreatening>true</lifeThreatening>
+        <vomitMtbDays>0.2</vomitMtbDays>
+        <painOffset>0.6</painOffset>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>life-threatening</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.9</painOffset>
+        <vomitMtbDays>0.1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.8</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.25</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+<!--
+  <HediffDef>
+    <defName>ToxinCanInStomachSuspended</defName>
+    <label>toxin in stomach (Suspended)</label>
+    <description>A full can of toxin is now circulating in the bloodstream. Such an amount of toxic substance is lethal.\nThe spread of toxins has been temporarily suspended, however the suspention will only last day.Continuous tending may allows the suspention to last longer.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1,0.2,0.2)</defaultLabelColor>
+    <makesSickThought>true</makesSickThought>
+    <tendable>true</tendable>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>1</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>stable</label>
+        <painOffset>0.1</painOffset>
+        <vomitMtbDays>1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>weakening</label>
+        <painOffset>0.2</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <li>
+        <minSeverity>0.7</minSeverity>
+        <label>failing</label>
+        <vomitMtbDays>0.2</vomitMtbDays>
+        <painOffset>0.6</painOffset>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>fail imminent</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.9</painOffset>
+        <vomitMtbDays>0.1</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>-->
+
+  <ThoughtDef>
+    <defName>AteToxicCan</defName>
+    <durationDays>1</durationDays>
+    <stages>
+      <li>
+        <label>ate toxic can</label>
+        <description>F U C K</description>
+        <baseMoodEffect>-100</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>CureToxinInStomach</defName>
+    <label>emergency toxin purge</label>
+    <description>This special medical operation uses large amount of giltterworld medicine to extract the toxins in the body.</description>
+    <descriptionHyperlinks>
+      <HediffDef>ToxinCanInStomach</HediffDef>
+    </descriptionHyperlinks>
+    <workerClass>Recipe_RemoveHediff</workerClass>
+    <jobString>Purging toxin.</jobString>
+    <workAmount>20000</workAmount>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <isViolation>false</isViolation>
+    <targetsBodyPart>false</targetsBodyPart>
+    <removesHediff>ToxinCanInStomach</removesHediff>
+    <successfullyRemovedHediffMessage>{0} has successfully removed the toxin in {1}'s body.</successfullyRemovedHediffMessage>
+    <skillRequirements>
+      <Medicine>8</Medicine>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineUltratech</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MedicineUltratech</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+</Defs>
